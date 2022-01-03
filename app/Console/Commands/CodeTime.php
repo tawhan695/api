@@ -43,7 +43,8 @@ class CodeTime extends Command
     ->get();
     // ->join('keytimes','key_has_users.keytime_id', '=', 'keytimes.id')
     foreach ($key as $item ){
-        echo $item->days . '>'. $item->created_at . '>';
+        Keytime::where('keytime',$item->keytime)->update(['days'=>$item->days-1]);
+        echo $item->days ;
     }
     }
 }
