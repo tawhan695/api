@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/update', [App\Http\Controllers\Api\codetime::class, 'update'])->name('update');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/code', [App\Http\Controllers\HomeController::class, 'send_code'])->name('code')->middleware('auth');
 Route::post('/open', [App\Http\Controllers\HomeController::class, 'open'])->name('open')->middleware('auth');
