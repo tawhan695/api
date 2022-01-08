@@ -21,5 +21,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/code', [App\Http\Controllers\HomeController::class, 'send_code'])->name('code')->middleware('auth');
-Route::get('/open', [App\Http\Controllers\HomeController::class, 'open'])->name('open')->middleware('auth');
+Route::post('/open', [App\Http\Controllers\HomeController::class, 'open'])->name('open')->middleware('auth');
 Route::get('/key',[App\http\Controllers\Api\KeyController::class, 'index'])->name('send_key')->middleware('auth');

@@ -5,6 +5,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Http\Request;
 use App\Models\Keytime;
+use Illuminate\Support\Facades\Storage;
 class HomeController extends Controller
 {
     /**
@@ -61,6 +62,17 @@ class HomeController extends Controller
 
     }
     public function open(Request $request){
-        print_r($request->all());
+        // response()->download(public_path('app/app-release.apk'));
+        Storage::disk('local')->put('windowns/windowns.txt', 'windows');
+        Storage::disk('local')->put('osx/osx.txt', 'osx');
+        if($request->OS =='windowns'){
+            return Storage::download('windowns/windowns.txt');
+        }else if($request->OS =='osx'){
+            return Storage::download('osx/osx.txt');
+        }
+        // else{
+        //     return Storage::download('example.txt');
+        // }
+        // print_r($request->all());
     }
 }
