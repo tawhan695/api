@@ -31,10 +31,10 @@ class KeyController extends Controller
     public function getday(Request $request){
         // $key = Key_has_user::join('keytimes','key_has_users.keytime_id', '=','keytimes.id')
         $keytime_id = Key_has_user::where('user_id' ,$request->id)->first()->keytime_id;
-        print_r($keytime_id);
+        // print_r($keytime_id);
         // ->select('keytimes.keytime','keytimes.days')
         // ->first();
-        // $Keytime = Keytime::where('id',$keytime_id)->first();
+        $Keytime = Keytime::where('id',$keytime_id)->first();
         // // print(key)
         if ($Keytime) {
 
