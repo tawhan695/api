@@ -32,7 +32,7 @@ class KeyController extends Controller
         $key = Key_has_user::join('keytimes','key_has_users.keytime_id', '=','keytimes.id')
         ->where('user_id' ,auth()->user()->id)
         ->select('keytimes.keytime','keytimes.days')
-        ->get();
+        ->first();
         // $Keytime = Keytime::where('keytime',$request->token)->first();
         if ($key) {
 
