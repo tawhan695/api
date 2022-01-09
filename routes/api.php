@@ -18,4 +18,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('login',[LoginController::class,'login']);
-Route::get('/key',[App\http\Controllers\Api\KeyController::class, 'index'])->name('send_key')->middleware('auth');
+Route::post('/key',[App\http\Controllers\Api\KeyController::class, 'getday'])->name('getday')->middleware('auth');

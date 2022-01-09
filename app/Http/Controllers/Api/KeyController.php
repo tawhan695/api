@@ -11,7 +11,7 @@ class KeyController extends Controller
 
         $Keytime = Keytime::where('keytime',$request->token)->first();
         if ($Keytime) {
-            
+
             return response()->json([
                 'key' => $Keytime->keytime ,
                 'days' => $Keytime->days ,
@@ -26,8 +26,25 @@ class KeyController extends Controller
                 ->header('Content-Type', 'application/json','charset=utf-8');
             # code...
         }
+    }
+    public function getday(Request $request){
 
+        $Keytime = Keytime::where('keytime',$request->token)->first();
+        if ($Keytime) {
 
-
+            return response()->json([
+                'key' => $Keytime->keytime ,
+                'days' => $Keytime->days ,
+                'status_code' => 200,
+                ])
+                ->header('Content-Type', 'application/json','charset=utf-8');
+        } else {
+            return response()->json([
+                'key' => 'not key !!' ,
+                'status_code' => 403,
+                ])
+                ->header('Content-Type', 'application/json','charset=utf-8');
+            # code...
+        }
     }
 }
