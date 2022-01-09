@@ -30,7 +30,7 @@ class KeyController extends Controller
     }
     public function getday(Request $request){
         $key = Key_has_user::join('keytimes','key_has_users.keytime_id', '=','keytimes.id')
-        ->where('user_id' ,auth()->user()->id)
+        ->where('user_id' ,$request->user('api')->id)
         ->select('keytimes.keytime','keytimes.days')
         ->first();
         // $Keytime = Keytime::where('keytime',$request->token)->first();
