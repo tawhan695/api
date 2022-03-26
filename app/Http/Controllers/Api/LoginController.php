@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Phattarachai\LineNotify\Facade\Line;
+
 
 
 class LoginController extends Controller
@@ -44,6 +46,8 @@ class LoginController extends Controller
                 }else{
                     $token =$user->createToken($request->device_name)->plainTextToken;
                 }
+                // จากใน Controller หรือที่อื่น ๆ
+                Line::send('User Login :'.  $user .' ** device_name :'.$request->device_name);
                 return response()->json([
                     'sucess' => true,
                     'user' => $user,

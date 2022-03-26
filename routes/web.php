@@ -24,3 +24,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::post('/code', [App\Http\Controllers\HomeController::class, 'send_code'])->name('code')->middleware('auth');
 Route::post('/open', [App\Http\Controllers\HomeController::class, 'open'])->name('open')->middleware('auth');
 Route::get('/key',[App\http\Controllers\Api\KeyController::class, 'index'])->name('send_key')->middleware('auth');
+
+Route::group(['middleware' => ['auth','role:admin']], function () {
+   Route::resource('admin',App\http\Controllers\Admin\AdminController::class);
+});
